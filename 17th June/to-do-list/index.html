@@ -1,22 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
     <title>To Do list</title>
-</head>
+  </head>
 
-<body>
-    <!-- Header -->
-    <div class="header">
-        <h1>ToDo List</h1>
-    </div>
-    <h1>
-        Add Items
-    </h1>
-    
-</body>
-
+  <body id="body">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">TO DO List</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav"></ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="container mt-5 col-6">
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            id="input--given"
+            placeholder="Give the task"
+            placeholder="Recipient's username"
+            aria-label="Recipient's username"
+            aria-describedby="button-addon2"
+          />
+          <button
+            id="add_btn"
+            class="btn btn-outline-success"
+            type="button"
+            id="button-addon2"
+          >
+            Add
+          </button>
+        </div>
+        <ul class="list-group"></ul>
+      </div>
+    </main>
+    <script>
+      let editBtn = [],
+        listGrp = [];
+      let addBtn = document.getElementById("add_btn");
+      const givenInput = document.getElementById("input--given");
+      console.log(addBtn);
+      addBtn.addEventListener("click", addChapter);
+      function addChapter(e) {
+        if (String(givenInput.value).trim() === "") {
+          alert("Please give the task");
+          return;
+        }
+        // const newLi = document.createElement("li");
+        // newLi.classList.add("list-group-item");
+        const newLi = document.querySelector(".list-group");
+        newLi.innerHTML += `<li class="list-group-item" style=" display: flex;
+              justify-content: space-between;
+              border: 2px solid rgb(206, 212, 218);
+              align-items: center;">  <h3 class="text" style="flex: 6; color:grey">${givenInput.value}</h3>
+            <div  style="flex: 1; padding-right: 2px">
+              <input
+              class="edit-btn"
+                type="submit"
+                style="background-color: rgb(2, 177, 111)"
+                value="Edit"
+              />
+            </div>
+            <div style="flex: 1; padding-right: 2px">
+              <input
+              class="remove-btn"
+                type="submit"
+                style="background-color: rgb(2, 177, 111)"
+                value="Remove"
+              />
+            </div>
+          </li>`;
+        let parentChild = document.getElementsByClassName("list-group");
+        console.log(parentChild);
+        // parentChild[0].append(newLi);
+        givenInput.value = "";
+        listGrp = document.querySelectorAll(".list-group-item");
+        editBtn = document.querySelectorAll(".edit-btn");
+        // console.log(editBtn);
+        console.log(editBtn);
+        editBtn.forEach((element, index) => {
+          element.addEventListener("click", () => {
+            let inp = prompt("What task you want to replace it with?");
+            const text = document.querySelectorAll(".text");
+            text[index].textContent = inp;
+          });
+        });
+        const removeBtn = document.querySelectorAll(".remove-btn");
+        removeBtn.forEach((element, index) => {
+          element.addEventListener("click", () => {
+            listGrp[index].remove();
+          });
+        });
+      }
+    </script>
+  </body>
 </html>
