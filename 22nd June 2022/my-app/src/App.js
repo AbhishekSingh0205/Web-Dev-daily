@@ -1,18 +1,31 @@
 import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import Navbar from "./Navbar";
-import TextUtils from "./TextUtils";
+import Navbar from "./components/Navbar";
+import TextUtils from "./components/TextUtils";
+import Alert from "./components/Alert";
 
 function App() {
+  const [alert, setAlert] = useState(null);
   const [mode, setMode] = useState(`light`);
+  const showAlert = (msg, type) => {
+    setAlert({
+      message: msg,
+      type: type,
+    });
+    setTimeout(() => {
+      setAlert(null);
+    }, 1500);
+  };
   const toggleMode = () => {
     if (mode === "dark") {
       setMode("light");
       document.body.style.backgroundColor = "white";
+      showAlert("Light mode have been enabled", "success");
     } else {
       setMode("dark");
-      document.body.style.backgroundColor = "rgb(126,166,227)";
+      document.body.style.backgroundColor = "rgb(20 27 37)";
+      showAlert("Dark mode have been enabled", "success");
     }
   };
   return (
@@ -23,7 +36,12 @@ function App() {
         mode={mode}
         toggleMode={toggleMode}
       ></Navbar>
-      <TextUtils value="Enter your text here" mode={mode}></TextUtils>
+      <Alert alert={alert} />
+      <TextUtils
+        value="Enter your text here"
+        mode={mode}
+        showAlert={showAlert}
+      ></TextUtils>
     </>
   );
 }

@@ -4,12 +4,15 @@ export default function (props) {
   const [text, setText] = useState("");
   const handleOnChage = (event) => {
     setText(event.target.value);
+    // props.showAlert("Converted to Uppercase","success");
   };
   const toUp = () => {
     setText(text.toUpperCase());
+    props.showAlert("Converted to Uppercase", "success");
   };
   const toLow = () => {
     setText(text.toLowerCase());
+    props.showAlert("Converted to Lowercase", "success");
   };
   const toCap = () => {
     let str = text;
@@ -21,14 +24,17 @@ export default function (props) {
       )
       .join(" ");
     setText(str);
+    props.showAlert("Converted to Capitalise", "success");
   };
   const clear = () => {
     setText("");
+    props.showAlert("Cleared the text", "success");
   };
   const removeExtraSpace = () => {
     let str = text;
     str = str.replace(/\s+/g, " ").trim();
     setText(str);
+    props.showAlert("Removed extra spaces", "success");
   };
   const handleClick = () => {
     var copyText = document.getElementById("exampleFormControlTextarea1");
@@ -39,16 +45,20 @@ export default function (props) {
 
     /* Copy the text inside the text field */
     navigator.clipboard.writeText(copyText.value);
+    props.showAlert("Copied to clipboard", "success");
   };
   return (
     <>
-      <div className="container">
+      <div
+        className="container"
+        style={{ color: props.mode === "dark" ? "white" : "rgb(20 27 37)" }}
+      >
         <label
           id="myBox"
           htmlFor="exampleFormControlTextarea1"
           className="form-label"
         >
-          Example textarea
+          Write text below :
         </label>
         <textarea
           placeholder={props.value}
@@ -57,6 +67,11 @@ export default function (props) {
           value={text}
           id="exampleFormControlTextarea1"
           rows="3"
+          style={{
+            backgroundColor: props.mode === "dark" ? "#44516a" : "white",
+            color: props.mode === "dark" ? "white" : "rgb(20 27 37)",
+            caretColor: props.mode === "dark" ? "white" : "rgb(20 27 37)",
+          }}
         ></textarea>
         <button
           type="button"
@@ -101,7 +116,10 @@ export default function (props) {
           Copy text
         </button>
       </div>
-      <div className="container">
+      <div
+        className="container"
+        style={{ color: props.mode === "dark" ? "white" : "rgb(20 27 37)" }}
+      >
         <h2>Overview of new string</h2>
         <p>{text}</p>
       </div>
