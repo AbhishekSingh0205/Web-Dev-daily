@@ -1,0 +1,43 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+header{
+    background-image: url("./starter_files/heroSectionBackground.png");
+    background-position: center;
+    background-size: cover;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background: transparent; */
+}
+nav{
+    display: flex;
+    color: white;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 400;
+}
+.childFlex{
+    display: flex;
+    list-style: none;
+    padding-right: 40px;
+    padding-right: 156px;
+    font-size: 18px;
+}
+.getTheApp{
+    padding: 20px;
+    padding-left: 156px;
+}
+.childFlex li{
+    padding: 20px;
+}
+.zomatoImg img{
+    height: 8vh;
+}
+

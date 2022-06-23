@@ -1,49 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" type="image/x-png" href="./images/favicon-32x32.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>FEM | Interactive Rating Component using SCSS & JavaScript</title>
+  </head>
+  <body id="body">
+    <main>
+      <img src="./images/icon-star.svg" alt="star-image" />
+      <h1>How did we do?</h1>
+      <p>
+        Please let us know how we did with your support request. All feedback is
+        appreciated to help us improve our offering!
+      </p>
+      <div class="ratings">
+        <div class="points" id="pt1">1</div>
+        <div class="points" id="pt2">2</div>
+        <div class="points" id="pt3">3</div>
+        <div class="points" id="pt4">4</div>
+        <div class="points" id="pt5">5</div>
+      </div>
+      <div id="submit">
+        <input type="submit" id="sub" style="font-size: 20px" value="Submit" />
+      </div>
+    </main>
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Interactive rating component</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
-
-  <!-- Rating state start -->
-
-  How did we do?
-
-  Please let us know how we did with your support request. All feedback is appreciated 
-  to help us improve our offering!
-
-  1 2 3 4 5
-
-  Submit
-
-  <!-- Rating state end -->
-
-  <!-- Thank you state start -->
-
-  You selected <!-- Add rating here --> out of 5
-
-  Thank you!
-
-  We appreciate you taking the time to give a rating. If you ever need more support, 
-  don’t hesitate to get in touch!
-
-  <!-- Thank you state end -->
-
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+    <script>
+      // addOnSelect();
+      // addOnSubmit();
+      let finalp;
+      function update(pointsNum) {
+        const allpoints = document.getElementsByClassName("points");
+        for (p of allpoints) {
+          if (p.innerHTML == pointsNum.innerHTML) {
+            p.classList.add("class-selectd");
+            finalp = p.innerHTML;
+          } else {
+            p.classList.remove("class-selectd");
+          }
+        }
+      }
+      let suv = document.getElementsByClassName("points");
+      for (let i = 1; i <= 5; i++) {
+        suv[i - 1].addEventListener("click", function () {
+          update(suv[i - 1]);
+        });
+      }
+      const submit = document.getElementById("submit");
+      submit.addEventListener("click", () => {
+        const body = document.getElementById("body");
+        body.innerHTML = `<div class="main">
+        <div class="img">
+          <img src="./images/illustration-thank-you.svg" alt="" />
+        </div>
+        <div id="selectdPoint">You selected ${finalp} out of 5 points</div>
+        <h1 class="newH">Thank you!</h1>
+        <p class="newP">
+          We appreciate you taking the time to give a rating. If you ever need
+          more support, don’t hesitate to get in touch!
+        </p>
+      </div>`;
+      });
+    </script>
+  </body>
 </html>

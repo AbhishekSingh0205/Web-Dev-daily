@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <title>To Do list</title>
+  </head>
+
+  <body id="body">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">TO DO List</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav"></ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="container mt-5 col-6">
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            id="input--given"
+            placeholder="Give the task"
+            placeholder="Recipient's username"
+            aria-label="Recipient's username"
+            aria-describedby="button-addon2"
+          />
+          <button
+            id="add_btn"
+            class="btn btn-outline-success"
+            type="button"
+            id="button-addon2"
+          >
+            Add
+          </button>
+        </div>
+        <ul class="list-group"></ul>
+      </div>
+    </main>
+    <script>
+      let ptr = 0;
+      const addBtn = document.getElementById("add_btn");
+      addBtn.addEventListener("click", addOn);
+      function addOn() {
+        var input = document.getElementById("input--given").value;
+        var list = document.getElementsByClassName("list-group")[0];
+        var li = document.createElement("div");
+
+        li.innerHTML = `
+            <h3 id="input-${ptr}" style="width:70%">${input}</h3>
+            <button id="edit-${ptr}" class="edit btn btn-outline-primary" type="button">Edit</button>
+            <button id="btn-${ptr}" class="remove btn btn-outline-primary" type="button">Remove</button>
+            `;
+        // add to DOM
+        li.classList = "input-group";
+        list.appendChild(li);
+
+        // add event listeners
+        const inputSchema = document.getElementById(`input-${ptr}`);
+        const edit = document.getElementById(`edit-${ptr}`);
+        const btn = document.getElementById(`btn-${ptr}`);
+
+        btn.addEventListener("click", () => {
+          inputSchema.parentElement.remove();
+        });
+
+        edit.addEventListener("click", () => {
+          let newVal = prompt("Enter updated value");
+          inputSchema.value = newVal;
+        });
+        ptr++;
+      }
+    </script>
+  </body>
+</html>

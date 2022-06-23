@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
-import Navbar from './components/Navbar';
-import './App.css';
-import TextForm from './components/TextForm';
+import Navbar from "./components/Navbar";
+import "./App.css";
+import TextForm from "./components/TextForm";
 
 // let name = "Abhishek Singh";
 function App() {

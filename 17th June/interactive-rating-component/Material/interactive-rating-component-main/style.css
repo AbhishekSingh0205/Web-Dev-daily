@@ -1,0 +1,111 @@
+body{
+    background-color: rgb(18,20,23);
+    box-sizing: border-box;
+}
+#submit{
+    padding-top: 20px;
+    font-weight: 400;
+    text-align: center;
+    
+}
+#sub{
+    padding: 10px;
+    border-radius: 20px;
+    display: block;
+    border: 0px;
+    width: 100%;
+    color: white;
+    background-color: rgb(251,116,19);
+}
+main{
+    display: flex;
+    max-width: 321px;
+    height: auto;
+    background-color: rgb(33,40,49);
+    justify-content: center;
+    /* align-items: center; */
+    margin: auto;
+    margin-top: 155px;
+    margin-bottom: auto;
+    padding: 50px;
+    border-radius: 20px;
+    flex-direction: column;
+}
+main h1{
+    color: rgb(255,255,255);
+    font-family:  'Overpass', sans-serif;
+    font-weight: 700;
+}
+main p{
+    color: rgb(134,158,172);
+    font-family:  'Overpass', sans-serif;
+    font-weight: 400;
+}
+.ratings{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.points{
+    color: rgb(137,158,172);
+    border-radius: 50%;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 55.15px;    
+    background-color: rgb(59,66,75);
+}
+img{
+    width:16px;
+    border-radius: 50%;
+    padding: 17px;
+    background-color: rgb(59,66,75);
+}
+.points:hover{
+    color: white;
+    background-color: rgb(251,116,19);
+}
+.class-selectd{
+    background-color: rgb(124,135,152);
+    color: white;
+}
+.main{
+    display: flex;
+    max-width: 321px;
+    height: auto;
+    background-color: rgb(37,45,55);
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 155px;
+    margin-bottom: auto;
+    padding: 50px;
+    border-radius: 20px;
+    flex-direction: column;
+}
+.newH{
+    color:white;
+    font-family:  'Overpass', sans-serif;
+    font-weight: 700;
+}
+.newP{
+    font-family:  'Overpass', sans-serif;
+    font-weight: 400;
+    color:rgb(255,255,255);
+}
+.img img{
+    width: 140px;
+}
+#selectdPoint{
+    color: rgb(251,116,19);
+    font-size: 15px;
+    font-weight: 400;
+    font-family: 'Overpass',sans-serif;
+    border: 0x;
+    background-color: rgb(51,58,68);
+    padding: 10px;
+    border-radius: 18px;
+}

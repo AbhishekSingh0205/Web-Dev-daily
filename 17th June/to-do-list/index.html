@@ -11,7 +11,7 @@
       crossorigin="anonymous"
     />
 
-    <link rel="stylesheet" href="style.css" />
+    <!-- <link rel="stylesheet" href="style.css" /> -->
     <title>To Do list</title>
   </head>
 
@@ -38,7 +38,7 @@
       </nav>
     </header>
     <main>
-      <div class="container mt-5 col-6">
+      <div class="container mt-5 col-12">
         <div class="input-group mb-3">
           <input
             type="text"
@@ -62,11 +62,11 @@
       </div>
     </main>
     <script>
-      let editBtn = [],
-        listGrp = [];
+      let editBtn = [];
+      let listGrp = [];
       let addBtn = document.getElementById("add_btn");
       const givenInput = document.getElementById("input--given");
-      console.log(addBtn);
+      // console.log(addBtn);
       addBtn.addEventListener("click", addChapter);
       function addChapter(e) {
         if (String(givenInput.value).trim() === "") {
@@ -103,19 +103,33 @@
         givenInput.value = "";
         listGrp = document.querySelectorAll(".list-group-item");
         editBtn = document.querySelectorAll(".edit-btn");
+        const arr = [];
+        for (let indx = 0; indx < listGrp.length; indx++) {
+          arr.push(listGrp[indx]);
+        }
+        console.log("Arr", arr, typeof arr);
         // console.log(editBtn);
         console.log(editBtn);
         editBtn.forEach((element, index) => {
           element.addEventListener("click", () => {
+            console.log(index);
             let inp = prompt("What task you want to replace it with?");
+            console.log("editing", index);
+            while (!inp) {
+              inp = prompt(
+                "Please provide the taks you want to replace it with?"
+              );
+            }
             const text = document.querySelectorAll(".text");
             text[index].textContent = inp;
           });
         });
-        const removeBtn = document.querySelectorAll(".remove-btn");
+        let removeBtn = document.querySelectorAll(".remove-btn");
         removeBtn.forEach((element, index) => {
           element.addEventListener("click", () => {
-            listGrp[index].remove();
+            console.log("removed", index);
+            console.log(listGrp);
+            listGrp.splice(index, 1);
           });
         });
       }
