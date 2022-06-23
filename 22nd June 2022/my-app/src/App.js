@@ -4,6 +4,8 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import TextUtils from "./components/TextUtils";
 import Alert from "./components/Alert";
+import About from "./components/About";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function App() {
   const [alert, setAlert] = useState(null);
@@ -29,7 +31,7 @@ function App() {
     }
   };
   return (
-    <>
+    <Router>
       <Navbar
         home="Home"
         about="About Us"
@@ -37,12 +39,20 @@ function App() {
         toggleMode={toggleMode}
       ></Navbar>
       <Alert alert={alert} />
-      <TextUtils
-        value="Enter your text here"
-        mode={mode}
-        showAlert={showAlert}
-      ></TextUtils>
-    </>
+      <Routes>
+        <Route path="/About" element={<About />}></Route>
+        <Route
+          path="/"
+          element={
+            <TextUtils
+              value="Enter your text here"
+              mode={mode}
+              showAlert={showAlert}
+            />
+          }
+        ></Route>
+      </Routes>
+    </Router>
   );
 }
 
